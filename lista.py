@@ -8,11 +8,11 @@ como hasta listara teniendo en cuenta estas dos variables
 
 esta opcion NUNCA listara un registro/cliente que en su campo situacion haya una "b"
 """
+
 # importamos las librerias necesarias
 import struct
 import os
 from datetime import datetime
-
 # abrimos el fichero binario en modo lectura
 fibi = open("fibi", "br")
 
