@@ -4,3 +4,7 @@ he creado las opciones del fibi de altas y bajas, muy facil, ma;ana con mas carr
 he terminado la opcion Modificaciones del fichero binario, he terminado la opcion Lista(desde-hasta) del fichero binario
 18/11/24--------------------------------------------------------
 he creado la opcion/fichero actualizacion con fichero-texto y lo he terminado,
+19/11/24--------------------------------------------------------
+he modificado los ficheros bajas y modificaciones para en vez de buscar por dni busquen por codigo
+comienzo fichero consultaBD y lo termino, comienzo fichero consultas, y termino consultas, creo bajasBD y lo termino
+creo modificacionesBD, y lo termino, creo consultasBD, y lo termino, creo listadoBD,  

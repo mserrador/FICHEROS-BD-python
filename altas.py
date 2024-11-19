@@ -48,7 +48,7 @@ while continuar == False:
     fibi.write(registro)  
 
     # preguntamos al usuario si desea hacer mas altas
-    opcion = input("Desea hacer otra Alta S/N: ")   
+    opcion = input("Desea hacer otra Alta S/N: ").strip().upper()   
     if opcion == "N":
         continuar = True  
 
