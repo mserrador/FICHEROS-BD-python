@@ -47,7 +47,7 @@ while continuar == False:
 
     fibi.seek(129*(codigoBaja-1))
     fibi.write(nuevoRegistro)
-    print('Se ha dado de baja al cliente ', registro[2].decode('UTF-8').strip("\x00") + ", "+registro[1].decode('UTF-8').strip("\x00"))
+    print('Se ha dado de baja al cliente ', registro[2].decode('UTF-8') + ", "+registro[1].decode('UTF-8'))
 
     opcion = input('Deseas dar de baja a otro cliente? S/N: ').strip().upper()
     if opcion == "N":

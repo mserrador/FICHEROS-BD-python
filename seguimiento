@@ -7,4 +7,7 @@ he creado la opcion/fichero actualizacion con fichero-texto y lo he terminado,
 19/11/24--------------------------------------------------------
 he modificado los ficheros bajas y modificaciones para en vez de buscar por dni busquen por codigo
 comienzo fichero consultaBD y lo termino, comienzo fichero consultas, y termino consultas, creo bajasBD y lo termino
-creo modificacionesBD, y lo termino, creo consultasBD, y lo termino, creo listadoBD,  
+creo modificacionesBD, y lo termino, creo consultasBD, y lo termino, creo listadoBD, 
+20/11/24--------------------------------------------------------
+terminado listadoBD, comienzo actualizacion bd con fibi y lo termino, me falta el pickle y hacer el menu
+comienzo el menu 

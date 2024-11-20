@@ -23,3 +23,5 @@ CREATE TABLE clientes (
 ''')
 print("Tabla 'clientes' creada exitosamente.")
 
+# Cerrar la conexión
+conn.close()

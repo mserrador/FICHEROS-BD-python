@@ -11,7 +11,6 @@ cursor = conn.cursor()
 """
 Permite consultar un cliente específico por su DNI.
 """
-cursor = conn.cursor()
 
 # Solicitar el DNI del cliente a buscar
 dni = input("Introduce el DNI del cliente que deseas consultar: ")
