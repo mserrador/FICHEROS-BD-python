@@ -82,9 +82,6 @@ for i in range(registros):
             print(f"Cliente con DNI {dniRegistro} actualizado en el fichero fibi.")
 
 
-        else:
-            print('cliente no encontrado en la BD')
-
 
 # cierro el fichero fibi
 fibi.close()
