@@ -6,6 +6,7 @@ import struct
 import os
 import sqlite3
 from datetime import datetime
+import pickle
 
 def actualizacionBD():
     """
@@ -773,6 +774,78 @@ def modificacionesBD():
     conn.close()
 
 
+class Situacion:
+    def __init__(self,debeTotal,haberTotal,codigo,timeStamp):
+        self.debeTotal = debeTotal
+        self.haberTotal = haberTotal
+        self.codigo = codigo
+        self.timeStamp = timeStamp
+    def mostrarDatos(self):
+        print()
+        print("Debe Total:",self.debeTotal)
+        print("haber Total:",self.haberTotal)
+        print("Ultimo codigo del cliente:",self.codigo)
+        print("TimeStamp de la ultima actualizacion:", self.timeStamp.decode("UTF-8"))
+        print()
+
+
+
+
+def informeSituacionActual():
+    # abrimos el fichero binario
+    fibi = open("fibi","br")
+    continuar = False
+
+    # crear la structura del regiistro
+    s = struct.Struct("I 15s 50s 9s I f f 1s 18s 18s")
+
+    # vamos a sacar la longitud del fichero
+    fichero = os.stat("fibi")
+    bytes = fichero.st_size
+    registros =  int(bytes/129)
+
+    # declaramos las variables para rellenar el objeto que se guardara en el pickle
+    debeTotal = 0
+    haberTotal = 0
+    codigo = 0
+    fechaActual = datetime.now()
+    timeStamp = fechaActual.strftime("%Y-%m-%d %H:%M:%S")
+
+    # hacemos un bucle para rellenar las variables
+    for i in range(registros):
+        registro = s.unpack(fibi.read(129))
+
+        codigo = registro[0]
+        debeTotal = debeTotal + registro[5]
+        haberTotal = haberTotal + registro[6]
+
+
+    # rellenamos el molde de la calse situacion
+    situacion1 = Situacion(debeTotal,haberTotal,codigo,timeStamp.encode("UTF-8"))
+
+    # abrimos el fichero del pickle
+    fiPickle=open("fiPickle","bw")
+
+    # escribimos el pickle en el fichero
+    # el primer parametro es el objeto y el segundo el fichero
+    pickle.dump(situacion1, fiPickle)
+
+    fiPickle.close()
+
+    opcion = input('Deseas ver el contenido del pickle? S/N: ')
+
+    if opcion == "S":
+        # abrimos el fichero del pickle
+        fiPickle=open("fiPickle","br")
+
+        situacion = pickle.load(fiPickle)
+
+        situacion.mostrarDatos()
+
+        fiPickle.close()
+
+
+
 def menuBinario():
     continuar = True
     while continuar == True:
@@ -784,6 +857,7 @@ def menuBinario():
         print('Lista(desde-hasta): 5')
         print('Actualizacion con fichero texto: 6')
         print('Actualizacion de la B.D: 7')
+        print('Informe situacion actual: 8')
         print('Volver: 0')
         opcion = int(input('Selecciona una opcion: '))
 
@@ -810,6 +884,9 @@ def menuBinario():
         elif opcion == 7:
             print()
             actualizacionBD()
+        elif opcion == 8:
+            print()
+            informeSituacionActual()
 
 def menuBD():
     continuar = True
